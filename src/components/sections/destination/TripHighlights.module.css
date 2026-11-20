@@ -1,0 +1,122 @@
+.wrap {
+  padding: clamp(100px, 12vw, 180px) var(--gutter);
+  background: var(--white);
+  color: var(--black);
+}
+.head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 24px 48px;
+  margin-bottom: clamp(48px, 7vw, 100px);
+}
+.head > p:first-child {
+  grid-column: 1 / -1;
+  color: var(--ink-muted);
+}
+.title {
+  font-size: clamp(54px, 8vw, 150px);
+}
+.title :global(.italic) {
+  text-transform: none;
+}
+.note {
+  color: var(--ink-muted);
+  padding-bottom: 1em;
+}
+
+.listWrap {
+  position: relative;
+}
+.list {
+  list-style: none;
+  border-top: 1px solid var(--ink-line);
+}
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px 1.2fr 1fr;
+  align-items: baseline;
+  gap: 24px;
+  padding: clamp(22px, 2.6vw, 36px) 0;
+  border-bottom: 1px solid var(--ink-line);
+  transition: color 0.5s, padding 0.7s var(--ease-out);
+}
+.idx {
+  color: var(--ink-muted);
+}
+.rowTitle {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(30px, 3.6vw, 64px);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  transition: transform 0.7s var(--ease-out);
+}
+.rowText {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  max-width: 38ch;
+}
+.thumb {
+  display: none;
+}
+@media (hover: hover) {
+  .list:hover .row:not(.on) {
+    color: rgba(8, 8, 8, 0.35);
+  }
+  .on .rowTitle {
+    transform: translateX(16px);
+    font-style: italic;
+  }
+}
+
+.float {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(220px, 20vw, 340px);
+  aspect-ratio: 4 / 5;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.4s, scale 0.6s var(--ease-out);
+  overflow: hidden;
+}
+.floatOn {
+  opacity: 1;
+  scale: 1.18;
+}
+.floatImg {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.5s;
+}
+
+@media (hover: none), (max-width: 899px) {
+  .float {
+    display: none;
+  }
+  .head {
+    grid-template-columns: 1fr;
+  }
+  .row {
+    grid-template-columns: 40px 1fr;
+    gap: 8px 16px;
+  }
+  .rowText {
+    grid-column: 2;
+  }
+  .thumb {
+    display: block;
+    position: relative;
+    grid-column: 2;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    margin-top: 12px;
+    background: var(--white-2);
+  }
+}

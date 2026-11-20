@@ -1,0 +1,106 @@
+.story {
+  padding: clamp(110px, 14vw, 200px) var(--gutter);
+  background: var(--black);
+}
+.top {
+  max-width: 1400px;
+}
+.kicker {
+  color: var(--dim);
+  margin-bottom: 28px;
+}
+.title {
+  font-size: clamp(48px, 7.4vw, 140px);
+  line-height: 0.88;
+}
+.title :global(.italic) {
+  text-transform: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(40px, 7vw, 120px);
+  margin-top: clamp(64px, 9vw, 140px);
+  align-items: start;
+}
+
+.visual {
+  position: relative;
+  padding-bottom: 18%;
+}
+.main {
+  position: relative;
+}
+.mainMedia {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--black-3);
+}
+.insetWrap {
+  position: absolute;
+  right: -8%;
+  bottom: 0;
+  width: 44%;
+  z-index: 2;
+}
+.inset {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--black-3);
+  outline: 10px solid var(--black);
+}
+
+.copy {
+  display: grid;
+  gap: 24px;
+  padding-top: clamp(0px, 8vw, 140px);
+}
+.rule {
+  display: block;
+  margin-block: 16px;
+}
+.quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(26px, 2.6vw, 44px);
+  line-height: 1.12;
+}
+.facts {
+  display: grid;
+  gap: 18px;
+  margin-top: 16px;
+}
+.facts div {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.facts dt {
+  color: var(--dim);
+  padding-top: 4px;
+}
+.facts dd {
+  color: var(--white-2);
+}
+
+@media (max-width: 899px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .insetWrap {
+    right: 0;
+    width: 46%;
+  }
+  .visual {
+    padding-bottom: 22%;
+    margin-right: 6%;
+  }
+  .facts div {
+    grid-template-columns: 96px 1fr;
+  }
+}

@@ -1,0 +1,126 @@
+.worlds {
+  position: relative;
+  padding: clamp(110px, 16vw, 220px) var(--gutter) clamp(80px, 10vw, 140px);
+  background: var(--black);
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 32px 48px;
+}
+.head > p:first-child {
+  grid-column: 1 / -1;
+  color: var(--dim);
+}
+.title {
+  font-size: clamp(60px, 10vw, 190px);
+}
+.lead {
+  max-width: 30ch;
+  padding-bottom: 1.2em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: clamp(32px, 6vw, 96px);
+  margin-top: clamp(56px, 8vw, 110px);
+}
+
+.list {
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.list li {
+  border-bottom: 1px solid var(--line);
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  grid-template-areas:
+    'idx name arrow'
+    'idx meta arrow';
+  align-items: center;
+  column-gap: 20px;
+  padding: clamp(24px, 3vw, 40px) 0;
+  transition: padding 0.7s var(--ease-out), color 0.6s;
+}
+.idx {
+  grid-area: idx;
+  align-self: start;
+  padding-top: 1.4em;
+  color: var(--dim);
+}
+.name {
+  grid-area: name;
+  font-family: var(--serif);
+  font-size: clamp(56px, 7.4vw, 136px);
+  line-height: 0.9;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  transition: transform 0.8s var(--ease-out), font-style 0s;
+}
+.meta {
+  grid-area: meta;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 12px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.arrow {
+  grid-area: arrow;
+  opacity: 0.4;
+  transition: transform 0.7s var(--ease-out), opacity 0.5s;
+}
+.list:hover .row:not(.on) {
+  color: var(--dim);
+}
+.on .name {
+  transform: translateX(18px);
+  font-style: italic;
+  text-transform: none;
+}
+.on .arrow {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.globe {
+  position: relative;
+  max-width: 620px;
+  width: 100%;
+  justify-self: center;
+}
+.caption {
+  text-align: center;
+  color: var(--dim);
+  margin-top: 8px;
+}
+
+@media (max-width: 899px) {
+  .head {
+    grid-template-columns: 1fr;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .globe {
+    order: -1;
+    max-width: 420px;
+  }
+  .row {
+    grid-template-columns: 36px 1fr auto;
+  }
+  .name {
+    font-size: 15vw;
+  }
+}

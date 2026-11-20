@@ -1,0 +1,150 @@
+.story {
+  position: relative;
+  background: var(--black);
+}
+
+.stage {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--black);
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global(.js) .scene + .scene {
+    clip-path: inset(100% 0% 0% 0%);
+  }
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(8, 8, 8, 0.72) 0%, rgba(8, 8, 8, 0.25) 55%, rgba(8, 8, 8, 0.1) 100%),
+    linear-gradient(0deg, rgba(8, 8, 8, 0.6) 0%, rgba(8, 8, 8, 0) 40%);
+}
+
+.inset {
+  position: absolute;
+  width: clamp(160px, 17vw, 300px);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  will-change: transform;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.35);
+}
+.inset0 {
+  right: 12vw;
+  top: 26vh;
+}
+.inset1 {
+  right: 22vw;
+  top: 34vh;
+}
+.inset2 {
+  right: 8vw;
+  top: 30vh;
+}
+
+.copy {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(80px, 14vh, 140px);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+  color: var(--muted);
+}
+.metaRule {
+  width: 48px;
+  height: 1px;
+  background: currentColor;
+}
+
+.text {
+  /* Sized from the longest line so every scene keeps its art-directed breaks. */
+  font-size: min(clamp(52px, 8.4vw, 168px), calc(64vw / (var(--chars, 12) * 0.5)));
+  line-height: 0.88;
+}
+.text :global(.line) {
+  white-space: nowrap;
+}
+.text :global(.italic) {
+  text-transform: none;
+}
+
+.hud {
+  position: absolute;
+  z-index: 10;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(24px, 4vh, 40px);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--muted);
+}
+.progress {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+  overflow: hidden;
+}
+.progressBar {
+  display: block;
+  height: 100%;
+  background: var(--white);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@media (max-width: 899px) {
+  .text {
+    font-size: min(13vw, calc(88vw / (var(--chars, 12) * 0.52)));
+  }
+  .inset {
+    width: 34vw;
+  }
+  .inset0,
+  .inset1,
+  .inset2 {
+    right: var(--gutter);
+    top: 18vh;
+  }
+  .shade {
+    background: linear-gradient(0deg, rgba(8, 8, 8, 0.85) 0%, rgba(8, 8, 8, 0.2) 60%, rgba(8, 8, 8, 0.35) 100%);
+  }
+}
+
+/* Reduced motion: the film becomes a calm sequence of stills. */
+@media (prefers-reduced-motion: reduce) {
+  .stage {
+    height: auto;
+  }
+  .scene {
+    position: relative;
+    height: 100svh;
+  }
+  .inset {
+    top: auto;
+    bottom: 40vh;
+  }
+  .hud {
+    display: none;
+  }
+}

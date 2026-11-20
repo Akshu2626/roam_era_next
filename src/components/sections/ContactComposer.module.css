@@ -1,0 +1,149 @@
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 8vw, 140px);
+  padding: clamp(100px, 12vw, 180px) var(--gutter);
+  background: var(--black);
+}
+.aside {
+  display: grid;
+  gap: 28px;
+  align-content: start;
+}
+.aside > p:first-child {
+  color: var(--dim);
+}
+.title {
+  font-size: clamp(48px, 6.4vw, 120px);
+}
+.title :global(.italic) {
+  text-transform: none;
+}
+
+.channels {
+  list-style: none;
+  border-top: 1px solid var(--line);
+  margin-top: 12px;
+}
+.channel {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding 0.6s var(--ease-out);
+}
+.channel > span {
+  display: grid;
+  gap: 4px;
+}
+.channel :global(.eyebrow) {
+  color: var(--dim);
+}
+.channelText {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2vw, 32px);
+  line-height: 1.1;
+}
+@media (hover: hover) {
+  .channel:hover {
+    padding-left: 12px;
+  }
+}
+
+.form {
+  display: grid;
+  gap: 36px;
+  align-content: start;
+}
+.field {
+  display: grid;
+  gap: 14px;
+  border: 0;
+}
+.field label.eyebrow,
+.field legend {
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.field input[type='text'],
+.field textarea {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 0 16px;
+  font-family: var(--serif);
+  font-size: clamp(22px, 2vw, 32px);
+  line-height: 1.2;
+  border-radius: 0;
+  transition: border-color 0.4s;
+  resize: vertical;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--dim);
+}
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--white);
+}
+.field input[aria-invalid='true'] {
+  border-color: #e0816b;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background-color 0.4s, color 0.4s, border-color 0.4s;
+}
+.chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.chip:has(input:focus-visible) {
+  outline: 1px solid var(--white);
+  outline-offset: 3px;
+}
+.chipOn {
+  background: var(--white);
+  color: var(--black);
+  border-color: var(--white);
+}
+@media (hover: hover) {
+  .chip:not(.chipOn):hover {
+    border-color: var(--white);
+  }
+}
+
+.submitRow {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  padding-top: 8px;
+}
+.error {
+  color: #e0816b;
+  font-size: 14px;
+}
+
+@media (max-width: 899px) {
+  .contact {
+    grid-template-columns: 1fr;
+  }
+}

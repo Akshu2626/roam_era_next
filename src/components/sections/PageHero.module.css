@@ -1,0 +1,40 @@
+.hero {
+  padding: calc(var(--header-h) + clamp(60px, 10vw, 140px)) var(--gutter) 0;
+  background: var(--black);
+}
+.eyebrow {
+  color: var(--dim);
+  margin-bottom: 32px;
+}
+.title {
+  font-size: clamp(60px, 11vw, 210px);
+  line-height: 0.84;
+}
+.title :global(.italic) {
+  text-transform: none;
+}
+.intro {
+  margin-top: 40px;
+  margin-left: auto;
+  max-width: 38ch;
+}
+.strip {
+  position: relative;
+  height: clamp(320px, 62vh, 720px);
+  margin-top: clamp(56px, 8vw, 120px);
+  overflow: hidden;
+  background: var(--black-3);
+}
+.strip :global(img) {
+  height: 120%;
+  margin-top: -10%;
+}
+
+@media (max-width: 899px) {
+  .title {
+    font-size: 15vw;
+  }
+  .intro {
+    margin-left: 0;
+  }
+}

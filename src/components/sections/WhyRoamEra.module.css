@@ -1,0 +1,219 @@
+.why {
+  position: relative;
+  background: var(--white);
+  color: var(--black);
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  height: 100svh;
+  will-change: transform;
+}
+
+.panel {
+  position: relative;
+  flex-shrink: 0;
+  height: 100%;
+}
+
+/* Intro panel */
+.intro {
+  width: 82vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  padding: calc(var(--header-h) + 40px) var(--gutter) 48px;
+  border-right: 1px solid var(--ink-line);
+}
+.kicker {
+  grid-column: 1 / -1;
+  color: var(--ink-muted);
+}
+.title {
+  grid-column: 1 / -1;
+  align-self: center;
+  font-size: clamp(64px, 8.6vw, 170px);
+  line-height: 0.86;
+}
+.titleB {
+  display: block;
+  padding-left: 1.6em;
+}
+.titleB :global(.italic) {
+  text-transform: none;
+}
+.introText {
+  grid-column: 2;
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.65;
+  color: var(--ink-muted);
+  max-width: 40ch;
+}
+.hint {
+  grid-column: 1;
+  grid-row: 3;
+  align-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-muted);
+}
+
+/* Pillars */
+.pillar {
+  width: 58vw;
+  padding: calc(var(--header-h) + 24px) 5vw 48px;
+  border-right: 1px solid var(--ink-line);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 28px 4vw;
+}
+.num {
+  position: absolute;
+  font-family: var(--serif);
+  font-size: clamp(140px, 18vw, 340px);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(8, 8, 8, 0.28);
+  pointer-events: none;
+}
+.img {
+  position: relative;
+  overflow: hidden;
+  background: var(--white-2);
+}
+.text {
+  align-self: end;
+}
+.text p {
+  margin-top: 20px;
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.7;
+  color: var(--ink-muted);
+  max-width: 36ch;
+}
+.pillarTitle {
+  font-family: var(--serif);
+  font-size: clamp(40px, 4vw, 76px);
+  line-height: 0.92;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+
+/* Art-directed variations */
+.p0 .num { top: calc(var(--header-h) + 10px); right: 5vw; }
+.p0 .img { grid-column: 1; grid-row: 1 / span 2; }
+.p0 .text { grid-column: 2; grid-row: 2; }
+
+.p1 .num { bottom: 40px; left: 5vw; }
+.p1 .img { grid-column: 2; grid-row: 1; height: 62%; align-self: start; }
+.p1 .text { grid-column: 2; grid-row: 2; }
+
+.p2 .num { top: calc(var(--header-h) + 10px); left: 5vw; }
+.p2 .img { grid-column: 1 / -1; grid-row: 1; height: 70%; align-self: end; }
+.p2 .text { grid-column: 1; grid-row: 2; }
+
+.p3 .num { bottom: 40px; right: 5vw; }
+.p3 .img { grid-column: 2; grid-row: 1 / span 2; }
+.p3 .text { grid-column: 1; grid-row: 2; }
+
+/* Outro */
+.outro {
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 0 6vw;
+}
+.outroTitle {
+  font-size: clamp(56px, 7vw, 140px);
+}
+.outroTitle :global(.italic) {
+  text-transform: none;
+}
+
+.progress {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 20px;
+  height: 1px;
+  background: var(--ink-line);
+}
+.progress span {
+  display: block;
+  height: 100%;
+  background: var(--black);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Phones, tablets & reduced motion: a vertical editorial read */
+@media (max-width: 899px), (prefers-reduced-motion: reduce) {
+  .track {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+  .panel {
+    width: 100%;
+    height: auto;
+    border-right: 0;
+  }
+  .intro {
+    display: block;
+    padding: clamp(96px, 20vw, 140px) var(--gutter) 64px;
+  }
+  .title {
+    margin: 28px 0 32px;
+    font-size: clamp(54px, 13.5vw, 120px);
+  }
+  .titleB {
+    padding-left: 0.8em;
+  }
+  .hint {
+    display: none;
+  }
+  .pillar {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 24px;
+    padding: 56px var(--gutter);
+    border-top: 1px solid var(--ink-line);
+  }
+  .pillar .img {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3;
+  }
+  .pillar .text {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+  .pillar .num {
+    position: static;
+    font-size: 96px;
+    order: -1;
+  }
+  .p1 .img,
+  .p3 .img {
+    width: 82%;
+    justify-self: end;
+  }
+  .outro {
+    padding: 72px var(--gutter) 96px;
+  }
+  .progress {
+    display: none;
+  }
+}

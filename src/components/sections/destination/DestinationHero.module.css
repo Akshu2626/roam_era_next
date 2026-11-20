@@ -1,0 +1,119 @@
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  background: var(--black);
+}
+.media {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.shade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgba(8, 8, 8, 0.6) 0%, rgba(8, 8, 8, 0) 30%, rgba(8, 8, 8, 0) 55%, rgba(8, 8, 8, 0.85) 100%);
+}
+.cold .shade {
+  background:
+    linear-gradient(180deg, rgba(8, 8, 8, 0.6) 0%, rgba(8, 8, 8, 0) 30%, rgba(8, 8, 8, 0) 55%, rgba(8, 8, 8, 0.85) 100%),
+    rgba(30, 50, 70, 0.18);
+}
+.warm .shade {
+  background:
+    linear-gradient(180deg, rgba(8, 8, 8, 0.55) 0%, rgba(8, 8, 8, 0) 30%, rgba(8, 8, 8, 0) 55%, rgba(8, 8, 8, 0.85) 100%),
+    rgba(120, 60, 20, 0.14);
+}
+.dim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--black);
+  opacity: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: calc(var(--header-h) + 18px) var(--gutter) 0;
+}
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.cold .meta {
+  color: var(--cold);
+}
+.warm .meta {
+  color: var(--warm);
+}
+
+.center {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 28px;
+  text-align: center;
+}
+.mood {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.4vw, 38px);
+  line-height: 1.15;
+  max-width: 22ch;
+}
+.cue {
+  display: inline-flex;
+  gap: 10px;
+  min-height: 44px;
+  align-items: center;
+  border-bottom: 1px solid currentColor;
+}
+
+.name {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 25vw;
+  line-height: 0.74;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-inline: -0.5vw;
+  margin-bottom: -0.02em;
+  will-change: transform;
+}
+.mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-top: 0.05em;
+}
+.char {
+  display: inline-block;
+}
+:global(.js) .char {
+  transform: translateY(110%);
+}
+@media (prefers-reduced-motion: reduce) {
+  :global(.js) .char {
+    transform: none;
+  }
+}
+
+@media (max-width: 899px) {
+  .meta span:last-child {
+    display: none;
+  }
+}
